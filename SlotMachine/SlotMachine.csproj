@@ -98,6 +98,7 @@
     <Content Include="Resources\blank.gif" />
     <Content Include="Resources\cherry.gif" />
     <Content Include="Resources\grapes.gif" />
+    <None Include="Resources\lose.png" />
     <Content Include="Resources\orange.gif" />
     <Content Include="Resources\powerbutton.gif" />
     <Content Include="Resources\reset.gif" />

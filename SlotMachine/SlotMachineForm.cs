@@ -184,72 +184,127 @@ namespace SlotMachine
                 if (grapes == 3)
                 {
                     winnings = playerBet * 10;
+                    pictureBox1.Image = Properties.Resources.grapes;
+                    pictureBox2.Image = Properties.Resources.grapes;
+                    pictureBox3.Image = Properties.Resources.grapes;
                 }
                 else if (bananas == 3)
                 {
                     winnings = playerBet * 20;
+                    pictureBox1.Image = Properties.Resources.banana;
+                    pictureBox2.Image = Properties.Resources.banana;
+                    pictureBox3.Image = Properties.Resources.banana;
                 }
                 else if (oranges == 3)
                 {
                     winnings = playerBet * 30;
+                    pictureBox1.Image = Properties.Resources.orange;
+                    pictureBox2.Image = Properties.Resources.orange;
+                    pictureBox3.Image = Properties.Resources.orange;
                 }
                 else if (cherries == 3)
                 {
                     winnings = playerBet * 40;
+                    pictureBox1.Image = Properties.Resources.cherry;
+                    pictureBox2.Image = Properties.Resources.cherry;
+                    pictureBox3.Image = Properties.Resources.cherry;
                 }
                 else if (bars == 3)
                 {
                     winnings = playerBet * 50;
+                    pictureBox1.Image = Properties.Resources.bar;
+                    pictureBox2.Image = Properties.Resources.bar;
+                    pictureBox3.Image = Properties.Resources.bar;
                 }
                 else if (bells == 3)
                 {
                     winnings = playerBet * 75;
+                    pictureBox1.Image = Properties.Resources.bell;
+                    pictureBox2.Image = Properties.Resources.bell;
+                    pictureBox3.Image = Properties.Resources.bell;
                 }
                 else if (sevens == 3)
                 {
                     winnings = playerBet * 100;
+                    pictureBox1.Image = Properties.Resources.seven;
+                    pictureBox2.Image = Properties.Resources.seven;
+                    pictureBox3.Image = Properties.Resources.seven;
                 }
                 else if (grapes == 2)
                 {
                     winnings = playerBet * 2;
+                    pictureBox1.Image = Properties.Resources.grapes;
+                    pictureBox2.Image = Properties.Resources.grapes;
+                   
                 }
                 else if (bananas == 2)
                 {
                     winnings = playerBet * 2;
+                    pictureBox1.Image = Properties.Resources.banana;
+                    pictureBox2.Image = Properties.Resources.banana;
+                    
                 }
                 else if (oranges == 2)
                 {
                     winnings = playerBet * 3;
+                    pictureBox1.Image = Properties.Resources.orange;
+                    pictureBox2.Image = Properties.Resources.orange;
+                    
                 }
                 else if (cherries == 2)
                 {
                     winnings = playerBet * 4;
+                    pictureBox1.Image = Properties.Resources.cherry;
+                    pictureBox2.Image = Properties.Resources.cherry;
                 }
                 else if (bars == 2)
                 {
                     winnings = playerBet * 5;
+                    pictureBox1.Image = Properties.Resources.bar;
+                    pictureBox2.Image = Properties.Resources.bar;
                 }
                 else if (bells == 2)
                 {
                     winnings = playerBet * 10;
+                    
+                    pictureBox1.Image = Properties.Resources.bell;
+                    pictureBox2.Image = Properties.Resources.bell;
                 }
                 else if (sevens == 2)
                 {
                     winnings = playerBet * 20;
+                    pictureBox1.Image = Properties.Resources.seven;
+                    pictureBox2.Image = Properties.Resources.seven;
                 }
                 else if (sevens == 1)
                 {
                     winnings = playerBet * 5;
+                    pictureBox1.Image = Properties.Resources.seven;
                 }
+                else if (grapes == 1)
+                {
+                    winnings = playerBet * 5;
+                    pictureBox2.Image = Properties.Resources.grapes;
+                }
+                else if (bananas == 1)
+                {
+                    winnings = playerBet * 5;
+                    pictureBox1.Image = Properties.Resources.banana;
+                }
+
                 else
                 {
                     winnings = playerBet * 1;
+                    
                 }
                 winNumber++;
                 showWinMessage();
             }
             else
             {
+                pictureBox1.Image = Properties.Resources.lose;
+                pictureBox2.Image = Properties.Resources.lose;
+                pictureBox3.Image = Properties.Resources.lose;
                 lossNumber++;
                 showLossMessage();
             }
@@ -258,6 +313,9 @@ namespace SlotMachine
 
         private void SpinPictureBox_Click(object sender, EventArgs e)
         {
+            pictureBox1.Image = Properties.Resources.spin;
+            pictureBox2.Image = Properties.Resources.spin;
+            pictureBox3.Image = Properties.Resources.spin;
             playerBet = 10; // default bet amount
 
             if (playerMoney == 0)
@@ -278,6 +336,7 @@ namespace SlotMachine
             }
             else if (playerBet <= playerMoney)
             {
+                
                 spinResult = Reels();
                 fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
                 MessageBox.Show(fruits);
@@ -289,6 +348,11 @@ namespace SlotMachine
             {
                 MessageBox.Show("Please enter a valid bet amount");
             }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
