@@ -9,6 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * 	App name = Slot Machine
+    Author's name = Dilpreet Singh
+    Student	ID = 200306382
+    App	Creation Date = 15/12/2016
+    App description = This program IS used to build a slot machine
+ */
+
 namespace SlotMachine
 {
     public partial class SlotMachineForm : Form
@@ -316,43 +324,106 @@ namespace SlotMachine
             pictureBox1.Image = Properties.Resources.spin;
             pictureBox2.Image = Properties.Resources.spin;
             pictureBox3.Image = Properties.Resources.spin;
-            playerBet = 10; // default bet amount
 
-            if (playerMoney == 0)
+
+            if (Convert.ToInt32(textBox4.Text) > playerMoney)
             {
-                if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    resetAll();
-                    showPlayerStats();
-                }
+                SpinPictureBox.Enabled = false;
+                MessageBox.Show("pleasepress reset button and start again");
             }
-            else if (playerBet > playerMoney)
-            {
-                MessageBox.Show("You don't have enough Money to place that bet.", "Insufficient Funds");
-            }
-            else if (playerBet < 0)
-            {
-                MessageBox.Show("All bets must be a positive $ amount.", "Incorrect Bet");
-            }
-            else if (playerBet <= playerMoney)
-            {
-                
-                spinResult = Reels();
-                fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-                MessageBox.Show(fruits);
-                determineWinnings();
-                turn++;
-                showPlayerStats();
-            }
+
             else
             {
-                MessageBox.Show("Please enter a valid bet amount");
+               
+                playerBet = 10; // default bet amount
+
+                if (playerMoney == 0)
+                {
+                    if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        resetAll();
+                        showPlayerStats();
+                    }
+                }
+                else if (playerBet > playerMoney)
+                {
+                    MessageBox.Show("You don't have enough Money to place that bet.", "Insufficient Funds");
+                }
+                else if (playerBet < 0)
+                {
+                    MessageBox.Show("All bets must be a positive $ amount.", "Incorrect Bet");
+                }
+                else if (playerBet <= playerMoney)
+                {
+
+                    spinResult = Reels();
+                    fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
+                    MessageBox.Show(fruits);
+                    determineWinnings();
+                    turn++;
+                    showPlayerStats();
+                    textBox1.Text = playerMoney.ToString();
+                    textBox2.Text = playerBet.ToString();
+                    textBox3.Text = jackpot.ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid bet amount");
+                }
+
             }
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            resetAll();
+            SpinPictureBox.Enabled = true;
+            textBox1.Text = playerMoney.ToString();
+            textBox2.Text = playerBet.ToString();
+            textBox3.Text = jackpot.ToString();
+            MessageBox.Show("All stats have been reset");
+        }
+
+        private void quitGame_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void SlotMachineForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox4.Text))
+            {
+                MessageBox.Show("please enter something");
+            }
+            else if (textBox4.Text == "-")
+            {
+                MessageBox.Show("can't be negative");
+            }
+           else if (Convert.ToInt32 (textBox4.Text) > playerMoney )
+            {
+                MessageBox.Show("you don't have enough money. please enter a amount less then"+
+                                playerMoney);
+            }
+            else if (Convert.ToInt32(textBox4.Text) <=0)
+            {
+                MessageBox.Show("please enter a valid bid");
+            }
         }
     }
 
